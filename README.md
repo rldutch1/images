@@ -2,9 +2,7 @@ Enable Uploads via apache: <br />
 	<span style="color: #3366ff;">sudo chown apache:apache -R upload</span> <br />
 	<span style="color: #3366ff;">sudo chcon -Rv --type=httpd_sys_rw_content_t upload/</span> <br />
  <br />
-Convert file1 to file2: <br />
-	<span style="color: #3366ff;">ffmpeg -i $1 -vcodec copy -acodec copy $2</span> <br />
- <br />
+
 Error: SQLSTATE[HY000] [2002] Permission denied: <br />
 	<span style="color: #3366ff;">https://stackoverflow.com/questions/34673627/sqlstatehy000-2002-permission-denied<br /.>
 This happens because selinux avoids db connections from the httpd server to the remote db server. To solve it you need to access your server through ssh or just open a console if you have pretencial access and do the following: <br />
@@ -20,9 +18,7 @@ If you need to add the required port, just type: <br />
  <br />
 Type the command to check once again: <br />
 	<span style="color: #3366ff;">semanage port -l | grep http_port_t <br />
-	http_port_t tcp 80, 443, 488, 8008, 8009, 8443, 9000 <br />
-	</span> <br />
- <br />
+	<span style="color: #3366ff;">http_port_t tcp 80, 443, 488, 8008, 8009, 8443, 9000</span> <br />
 Then you should notify SELinux you want to allow network connections from the httpd server to the db remote server, setting the boolean variables that set it: <br />
  <br />
 Down the httpd service: <br /> 

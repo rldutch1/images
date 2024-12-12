@@ -1,7 +1,7 @@
 
 CREATE TABLE `images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(80) DEFAULT NULL,
+  `name` varchar(80) NOT NULL,
   `image` varchar(80) NOT NULL,
   `extension` varchar(10) NOT NULL,
   `tstamp` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
